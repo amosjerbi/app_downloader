@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj88ejvy2jlin"]
+
+[ext_resource type="Script" path="res://app_item.gd" id="1_l4e82"]
+[ext_resource type="Script" path="res://classes/texture_rect_url.gd" id="3_aqqsv"]
+[ext_resource type="Texture2D" uid="uid://c77sgb1v6k6bm" path="res://icons/loader.svg" id="4_fjd4u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kka0v"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ymw5"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="AppItem" type="PanelContainer"]
+offset_right = 140.0
+offset_bottom = 64.0
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kka0v")
+script = ExtResource("1_l4e82")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_aqqsv")
+loading_texture = ExtResource("4_fjd4u")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Highlight" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ymw5")
