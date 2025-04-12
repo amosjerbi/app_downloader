@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="v0.1.5"
+VERSION=$(grep 'config/version=' project/project.godot | sed -E 's/^config\/version="([^"]+)"/v\1/')
 APP_NAME="AppDownloader"
 APP_DIR="mnt/mmc/MUOS/application/${APP_NAME}"
 ARCHIVE_NAME="App_Downloader"
@@ -11,7 +11,7 @@ rm -f ".dist/${ARCHIVE_NAME}_${VERSION}.muxzip" || { echo "Error: Failed to clea
 mkdir -p .build/"${APP_DIR}"
 mkdir -p .dist
 
-echo "Building ${APP_NAME}..."
+echo "Building ${APP_NAME} ${VERSION}..."
 
 echo "Copying files..."
 cp -r mux_launch.sh .build/"${APP_DIR}" && echo "mux_launch.sh" || { echo "Error: Failed to copy mux_launch.sh"; exit 1; }
