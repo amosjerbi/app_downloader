@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://github.com/andersmmg/app_downloader/blob/main/project/splash.png?raw=true" alt="App Downloader Splash"/>
+</p>
+
+
 # muOS App Downloader
 
 Welcome to the muOS App Downloader! This application is designed to simplify the process of downloading apps for the muOS platform. Built using the Godot game engine, this app runs as a port through Portmaster, allowing you to easily access and manage your favorite applications.
