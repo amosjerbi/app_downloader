@@ -1,0 +1,26 @@
+[
+	{
+		"title": "App Downloader",
+		"image_url": "https://cdn.jsdelivr.net/gh/andersmmg/app_downloader/project/splash.png",
+		"description": "A muOS application for downloading apps directly from their GitHub releases.",
+		"repo": "andersmmg/app_downloader"
+	},
+	{
+		"title": "Aesthetic",
+		"image_url": "https://cdn.jsdelivr.net/gh/joneavila/aesthetic/.github/screenshot_menu_main.png",
+		"description": "A muOS application for creating minimalistic themes directly on your handheld.",
+		"repo": "joneavila/aesthetic"
+	},
+	{
+		"title": "Scrappy",
+		"image_url": "https://i.postimg.cc/1tcxQkS2/425036773-3f22110f-9df0-4ee6-80f5-e83f42dd1052.png",
+		"description": "An artwork scraper featuring a Skyscraper backend. Built with LOVE2D for muOS.",
+		"repo": "gabrielfvale/scrappy"
+	},
+	{
+		"title": "RomM",
+		"image_url": "https://cdn.jsdelivr.net/gh/rommapp/muos-app/.github/resources/gamelist.png",
+		"description": "Browse your game catalog, download titles, and sync your saves seamlessly",
+		"repo": "rommapp/muos-app"
+	}
+]
