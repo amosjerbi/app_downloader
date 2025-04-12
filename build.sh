@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="v0.1.4"
+VERSION="v0.1.5"
 APP_NAME="AppDownloader"
 APP_DIR="mnt/mmc/MUOS/application/${APP_NAME}"
 ARCHIVE_NAME="App_Downloader"
