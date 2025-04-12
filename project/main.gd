@@ -2,7 +2,7 @@ extends CanvasLayer
 
 const APP_ITEM = preload("res://app_item.tscn")
 const APPS_LIST_URL := "https://raw.githubusercontent.com/andersmmg/app_downloader/refs/heads/main/apps_listing.json"
-const ALLOWED_EXT := ['muxzip','muxupd']
+const ALLOWED_EXT := ['muxzip','muxupd','muxapp']
 
 var DOWNLOAD_LOCATION: String
 
@@ -132,6 +132,13 @@ func check_latest_release(repo_name: String) -> void:
 	if resp.success() and resp.status_ok():
 		set_progress_label("Parsing release...")
 		var releases = resp.body_as_json()
+		if not releases is Array:
+			show_error_message("Invalid API response.")
+			return
+		
+		if releases.size() == 0:
+			show_error_message("No releases available.")
+			return
 
 		var latest_release = releases[0]  # Get the latest release
 		var assets = latest_release["assets"]
@@ -183,6 +190,7 @@ func show_success_message(message: String) -> void:
 
 func show_error_message(message: String) -> void:
 	print("Error: %s" % message)
+	download_overlay.hide()
 	error_label.text = message
 	error_label.show()
 	success_label.hide()
