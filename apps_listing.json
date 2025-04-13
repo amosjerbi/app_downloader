@@ -28,5 +28,10 @@
 		"image_url": "https://i.postimg.cc/HWQqXjSQ/400180749-e9cf6c27-c8b1-4747-8ec9-61bd60b08587.png",
 		"description": "A simple tool to manage Bluetooth connections on gaming devices running muOS, allowing you to easily connect and control Bluetooth devices.",
 		"repo": "nvcuong1312/bltMuos"
+	},
+	{
+		"title": "Wifi Hotspot",
+		"description": "A simple tool to create a WiFi hotspot on gaming devices running muOS, providing a fast and stable network connection for other devices.",
+		"repo": "nvcuong1312/hotspotmuos"
 	}
 ]
