@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/andersmmg/app_downloader/blob/main/project/splash.png?raw=true" alt="App Downloader Splash"/>
+  <img src="https://raw.githubusercontent.com/andersmmg/app_downloader/refs/heads/main/.github/assets/app_downloader_logo.svg" alt="App Downloader Splash"/>
 </p>
 
 
@@ -12,6 +12,8 @@ Welcome to the muOS App Downloader! This application is designed to simplify the
 - **Download Apps**: Seamlessly download applications from GitHub releases.
 - **Dynamic App Listing**: Automatically fetches the list of available apps from `apps_listing.json` hosted in the repository.
 - **User-Friendly Interface**: Designed with simplicity in mind, making it easy for users to find and download apps.
+
+![Screenshot](https://raw.githubusercontent.com/andersmmg/app_downloader/refs/heads/main/.github/assets/screenshot.png)
 
 ## Requirements
 
