@@ -1,7 +1,8 @@
 #!/bin/bash
+# HELP: App Downloader
+# ICON: appdownloader
 
-PORTNAME=app_downloader
-PCK_FILE=AppDownloader.pck
+. /opt/muos/script/var/func.sh
 
 XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 
@@ -21,13 +22,13 @@ source $controlfolder/control.txt
 
 get_controls
 
-GAMEDIR="$(GET_VAR "device" "storage/rom/mount")/MUOS/application/AppDownloader/.app_downloader/"
+GAMEDIR="$(GET_VAR "device" "storage/rom/mount")/MUOS/application/App Downloader/"
 CONFDIR="$GAMEDIR/conf/"
 
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 mkdir -p "$GAMEDIR/conf"
-cd $GAMEDIR
+cd "$GAMEDIR"
 
 runtime="frt_4.1.3"
 if [ ! -f "$controlfolder/libs/${runtime}.squashfs" ]; then
@@ -47,7 +48,7 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 #  If XDG Path does not work
 # Use _directories to reroute that to a location within the ports folder.
-bind_directories ~/.portfolder $GAMEDIR/conf/.portfolder
+bind_directories ~/.portfolder ${GAMEDIR}conf/.portfolder
 
 # Setup Godot
 godot_dir="$HOME/godot"
@@ -60,9 +61,11 @@ PATH="$godot_dir:$PATH"
 # By default FRT sets Select as a Force Quit Hotkey, with this we disable that.
 export FRT_NO_EXIT_SHORTCUTS=FRT_NO_EXIT_SHORTCUTS
 
-$GPTOKEYB "$runtime" -c "./$PORTNAME.gptk" &
+SET_VAR "system" "foreground_process" $runtime
+
+$GPTOKEYB "$runtime" -c "./app_downloader.gptk" &
 pm_platform_helper "$godot_dir/$runtime"
-"$runtime" $GODOT_OPTS --main-pack "./$PCK_FILE"
+"$runtime" $GODOT_OPTS --main-pack "./AppDownloader.pck"
 
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
     $ESUDO umount "$godot_dir"
