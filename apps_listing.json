@@ -22,5 +22,11 @@
 		"image_url": "https://cdn.jsdelivr.net/gh/rommapp/muos-app/.github/resources/gamelist.png",
 		"description": "Browse your game catalog, download titles, and sync your saves seamlessly",
 		"repo": "rommapp/muos-app"
+	},
+	{
+		"title": "Bluetooth",
+		"image_url": "https://i.postimg.cc/HWQqXjSQ/400180749-e9cf6c27-c8b1-4747-8ec9-61bd60b08587.png",
+		"description": "A simple tool to manage Bluetooth connections on gaming devices running muOS, allowing you to easily connect and control Bluetooth devices.",
+		"repo": "nvcuong1312/bltMuos"
 	}
 ]
