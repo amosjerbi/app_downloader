@@ -33,5 +33,11 @@
 		"title": "Wifi Hotspot",
 		"description": "A simple tool to create a WiFi hotspot on gaming devices running muOS, providing a fast and stable network connection for other devices.",
 		"repo": "nvcuong1312/hotspotmuos"
+	},
+	{
+		"title": "APlayer",
+		"image_url": "https://i.postimg.cc/zB2qF1CH/7cffeb5a7182a1f4d4a759fc65a13a80ccd74a9e.png",
+		"description": "Audio player for MUOS on Love2D",
+		"repo": "vasinsky/Aplayer"
 	}
 ]
