@@ -1,21 +1,91 @@
-[gd_scene load_steps=19 format=3 uid="uid://c432fo8bftnlq"]
+[gd_scene load_steps=32 format=3 uid="uid://c432fo8bftnlq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" path="res://classes/texture_rect_url.gd" id="2_moj0t"]
 [ext_resource type="PackedScene" uid="uid://bj88ejvy2jlin" path="res://app_item.tscn" id="2_wdgc4"]
 [ext_resource type="Texture2D" uid="uid://2ey53ww266rr" path="res://icons/a_button.svg" id="3_8hryx"]
 [ext_resource type="Texture2D" uid="uid://num35sdixvrw" path="res://icons/b_button.svg" id="4_lu0eo"]
-[ext_resource type="Texture2D" uid="uid://cr5l3amflx6gn" path="res://icons/dpad.svg" id="5_wtwcv"]
+[ext_resource type="Texture2D" uid="uid://d3h3qt7arhj1e" path="res://icons/dpad.svg" id="5_wtwcv"]
 [ext_resource type="Texture2D" uid="uid://qavvd8y0jin4" path="res://icons/wifi-off.svg" id="6_56es7"]
+[ext_resource type="Texture2D" uid="uid://dbi6bq14y3v82" path="res://icons/dpad_vertical.svg" id="6_e702c"]
+[ext_resource type="LabelSettings" uid="uid://bdjknu0k1ajnt" path="res://prompt_label.tres" id="8_rlany"]
+[ext_resource type="Script" path="res://info_panel.gd" id="8_sibfm"]
+[ext_resource type="Texture2D" uid="uid://cqsqsfrot8ne" path="res://icons/download.svg" id="10_dxkg6"]
+[ext_resource type="Texture2D" uid="uid://fts56fgeau0y" path="res://icons/ellipsis.svg" id="12_4xnu5"]
 
 [sub_resource type="Theme" id="Theme_1csnl"]
 default_font_size = 19
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owir5"]
+content_margin_left = 3.0
+content_margin_top = 1.0
+content_margin_right = 3.0
+content_margin_bottom = 1.0
+bg_color = Color(1, 0.32549, 0.352941, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="LabelSettings" id="LabelSettings_q66ng"]
 font_color = Color(1, 0.32549, 0.352941, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5646g"]
+content_margin_left = 3.0
+content_margin_top = 1.0
+content_margin_right = 3.0
+content_margin_bottom = 1.0
+bg_color = Color(0, 0.960784, 0.619608, 0.392157)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="LabelSettings" id="LabelSettings_xjdy2"]
 font_color = Color(0, 0.960784, 0.619608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i73h4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hqbo"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.141176, 0.627451, 0.552941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd0pr"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_vx38o"]
+Button/constants/h_separation = 10
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxFlat_5hqbo")
+Button/styles/hover = SubResource("StyleBoxFlat_cd0pr")
+Button/styles/normal = SubResource("StyleBoxFlat_cd0pr")
+Button/styles/pressed = SubResource("StyleBoxFlat_5hqbo")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bdch"]
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbbdh"]
+font_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k85uw"]
 bg_color = Color(0, 0, 0, 0.819608)
@@ -30,7 +100,7 @@ bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ukv0q"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hondu"]
 font_size = 19
@@ -44,72 +114,242 @@ font_size = 17
 [node name="Main" type="CanvasLayer"]
 script = ExtResource("1_ig7tw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_1csnl")
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_1csnl")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="StatusBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 
-[node name="ErrorLabel" type="Label" parent="MarginContainer/VBoxContainer/StatusBar"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apps"
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
 unique_name_in_owner = true
 visible = false
+z_index = 1
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_owir5")
 text = "Error downloading app"
 label_settings = SubResource("LabelSettings_q66ng")
 
-[node name="SuccessLabel" type="Label" parent="MarginContainer/VBoxContainer/StatusBar"]
+[node name="SuccessLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5646g")
 text = "Downloaded Scrappy v1.0.1.muxzip"
 label_settings = SubResource("LabelSettings_xjdy2")
+vertical_alignment = 1
 
-[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SplitContainer" type="SplitContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 dragger_visibility = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/SplitContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="AppsList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/SplitContainer/ScrollContainer"]
+[node name="AppsList" type="GridContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+columns = 3
 
-[node name="AppItem" parent="MarginContainer/VBoxContainer/SplitContainer/ScrollContainer/AppsList" instance=ExtResource("2_wdgc4")]
+[node name="AppItem" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer/ScrollContainer/AppsList" instance=ExtResource("2_wdgc4")]
 layout_mode = 2
 app_title = "App Name"
 
-[node name="InfoContainer" type="BoxContainer" parent="MarginContainer/VBoxContainer/SplitContainer"]
+[node name="InfoContainer" type="BoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 vertical = true
 
-[node name="AppImage" type="TextureRect" parent="MarginContainer/VBoxContainer/SplitContainer/InfoContainer"]
-unique_name_in_owner = true
+[node name="AppImage" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer/InfoContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("2_moj0t")
 
-[node name="NoImageLabel" type="Label" parent="MarginContainer/VBoxContainer/SplitContainer/InfoContainer/AppImage"]
+[node name="NoImageLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer/InfoContainer/AppImage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No image."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AppDesc" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/SplitContainer/InfoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Example text."
+
+[node name="ControlPrompts" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i73h4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ControlPrompts"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_8hryx")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+text = "View"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_wtwcv")
+expand_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+text = "Scroll"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_lu0eo")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_e702c")
+expand_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/ControlPrompts/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Scroll"
+
+[node name="HTTPDownloader" type="HTTPRequest" parent="."]
+
+[node name="InfoPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vx38o")
+script = ExtResource("8_sibfm")
+
+[node name="ColorRect" type="ColorRect" parent="InfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.717647)
+
+[node name="Overlay" type="Control" parent="InfoPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoPanel/Overlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2bdch")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/Overlay/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_1csnl")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AppImage" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("2_moj0t")
+
+[node name="NoImageLabel" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/AppImage"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -127,57 +367,84 @@ text = "No image."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AppDesc" type="RichTextLabel" parent="MarginContainer/VBoxContainer/SplitContainer/InfoContainer"]
+[node name="AppTitle" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+text = "App Title"
+label_settings = SubResource("LabelSettings_tbbdh")
+horizontal_alignment = 1
+
+[node name="AppDesc" type="RichTextLabel" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.87451, 0.87451, 0.87451, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "Example text."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DownloadButton" type="Button" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Download"
+icon = ExtResource("10_dxkg6")
+
+[node name="PanelContainer" type="PanelContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i73h4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_8hryx")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-text = "Download"
+text = "Select"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_lu0eo")
 expand_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = "Back"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control2" type="Control" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-texture = ExtResource("5_wtwcv")
+texture = ExtResource("6_e702c")
 expand_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label3" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Scroll"
 
-[node name="HTTPDownloader" type="HTTPRequest" parent="."]
-
 [node name="DownloadOverlay" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -207,7 +474,7 @@ show_percentage = false
 
 [node name="LoadingOverlay" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -222,10 +489,16 @@ alignment = 1
 
 [node name="OfflineIcon" type="TextureRect" parent="LoadingOverlay/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 modulate = Color(0.6, 0.6, 0.6, 1)
 layout_mode = 2
 texture = ExtResource("6_56es7")
+stretch_mode = 5
+
+[node name="LoadingIcon" type="TextureRect" parent="LoadingOverlay/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 2
+texture = ExtResource("12_4xnu5")
 stretch_mode = 5
 
 [node name="LoadingLabel" type="Label" parent="LoadingOverlay/VBoxContainer"]
@@ -238,7 +511,6 @@ vertical_alignment = 1
 
 [node name="QuitPrompt" type="HBoxContainer" parent="LoadingOverlay/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 modulate = Color(0.6, 0.6, 0.6, 1)
 layout_mode = 2
 alignment = 1
@@ -247,12 +519,15 @@ alignment = 1
 layout_mode = 2
 text = "Press"
 label_settings = SubResource("LabelSettings_rfj5a")
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="LoadingOverlay/VBoxContainer/QuitPrompt"]
 layout_mode = 2
 texture = ExtResource("4_lu0eo")
+expand_mode = 2
 
 [node name="Label2" type="Label" parent="LoadingOverlay/VBoxContainer/QuitPrompt"]
 layout_mode = 2
 text = "to quit."
 label_settings = SubResource("LabelSettings_bx47k")
+vertical_alignment = 1

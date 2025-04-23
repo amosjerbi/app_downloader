@@ -7,10 +7,11 @@ const ALLOWED_EXT := ['muxzip','muxupd','muxapp']
 var DOWNLOAD_LOCATION: String
 
 @onready var http_downloader: HTTPRequest = $HTTPDownloader
-@onready var apps_list: VBoxContainer = %AppsList
+@onready var apps_list: GridContainer = %AppsList
 @onready var loading_overlay: Control = %LoadingOverlay
 @onready var app_desc: RichTextLabel = %AppDesc
 @onready var app_image: TextureRectUrl = %AppImage
+@onready var app_title: Label = %AppTitle
 @onready var download_overlay: Container = %DownloadOverlay
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var progress_label: Label = %ProgressLabel
@@ -20,11 +21,14 @@ var DOWNLOAD_LOCATION: String
 @onready var quit_prompt: Container = %QuitPrompt
 @onready var offline_icon: TextureRect = %OfflineIcon
 @onready var no_image_label = %NoImageLabel
+@onready var info_panel = $InfoPanel
+@onready var loading_icon = %LoadingIcon
 
 var apps: Array[AppItemData]
 var selected_app: AppItemData
 var download_target: String
 var is_downloading: bool = false
+var last_selected_app: Control
 
 var message_countdown: float = 0
 
@@ -38,6 +42,7 @@ func _init() -> void:
 func _ready() -> void:
 	quit_prompt.hide()
 	offline_icon.hide()
+	loading_icon.show()
 	error_label.hide()
 	success_label.hide()
 	no_image_label.hide()
@@ -46,6 +51,8 @@ func _ready() -> void:
 	download_overlay.hide()
 	http_downloader.request_completed.connect(_on_http_downloader_request_completed)
 	app_image.load_failed.connect(_image_load_failed)
+	info_panel.download_pressed.connect(_download_pressed)
+	info_panel.closed.connect(_panel_closed)
 	_get_store()
 
 func _process(delta) -> void:
@@ -60,12 +67,30 @@ func _process(delta) -> void:
 			get_tree().quit()
 	elif download_overlay.visible:
 		_update_download_progress()
+	elif info_panel.is_open():
+		if Input.is_action_just_pressed("back"):
+			info_panel.close()
 	else:
 		if Input.is_action_just_pressed("back"):
 			get_tree().quit()
-		if Input.is_action_just_pressed("download"):
+		if Input.is_action_just_pressed("select"):
 			if selected_app:
-				check_latest_release(selected_app.repo)
+				_store_last_selected()
+				info_panel.open()
+
+func _panel_closed() -> void:
+	if last_selected_app:
+		last_selected_app.grab_focus()
+
+func _store_last_selected():
+	last_selected_app = null
+	for i in apps_list.get_children():
+		if i.has_focus():
+			last_selected_app = i
+			return
+
+func _download_pressed() -> void:
+	check_latest_release(selected_app.repo)
 
 func _update_download_progress() -> void:
 	if not is_downloading:
@@ -86,12 +111,17 @@ func _get_store() -> void:
 		loading_label.text = "Failed to load data. Are you online?"
 		quit_prompt.show()
 		offline_icon.show()
+		loading_icon.hide()
+
+func _sort_apps(a: AppItemData, b: AppItemData) -> bool:
+	return a.title.naturalnocasecmp_to(b.title) < 0
 
 func _process_data(raw_data: Array) -> Array[AppItemData]:
 	var new_data: Array[AppItemData] = []
 	for i in raw_data:
 		if i.has('title'):
 			new_data.append(AppItemData.create(i))
+	new_data.sort_custom(_sort_apps)
 	return new_data
 
 func _show_data(data: Array[AppItemData]) -> void:
@@ -114,6 +144,7 @@ func _show_details(app_item: AppItemData):
 	selected_app = app_item
 	app_image.texture_url = app_item.image_url
 	app_desc.text = app_item.description
+	app_title.text = app_item.title
 
 func _image_load_failed() -> void:
 	no_image_label.show()
