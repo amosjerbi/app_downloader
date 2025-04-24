@@ -3,6 +3,7 @@ extends CanvasLayer
 const APP_ITEM = preload("res://app_item.tscn")
 const APPS_LIST_URL := "https://raw.githubusercontent.com/andersmmg/app_downloader/refs/heads/main/apps_listing.json"
 const ALLOWED_EXT := ['muxzip','muxupd','muxapp']
+const DISALLOWED_PHRASES := []
 
 var DOWNLOAD_LOCATION: String
 
@@ -176,10 +177,18 @@ func check_latest_release(repo_name: String) -> void:
 		var assets = latest_release["assets"]
 
 		for asset in assets:
-			var asset_name = asset["name"]
-			print(asset_name)
+			var asset_name: String = asset["name"]
+			if _has_bad_phrase(asset_name):
+				continue
 			if asset_name.get_extension() in ALLOWED_EXT:
 				var download_url = asset["browser_download_url"]
+				
+				if FileAccess.file_exists(str(DOWNLOAD_LOCATION, asset_name)):
+					var existing = FileAccess.open(str(DOWNLOAD_LOCATION, asset_name), FileAccess.READ)
+					if existing.get_length() == asset["size"]:
+						show_success_message("%s already downloaded!" % asset_name)
+						download_overlay.hide()
+						return
 				download_asset(download_url, asset_name)
 				return
 		show_error_message("No valid asset in release.")
@@ -188,10 +197,6 @@ func check_latest_release(repo_name: String) -> void:
 		return
 
 func download_asset(url: String, file_name: String) -> void:
-	if FileAccess.file_exists(str(DOWNLOAD_LOCATION, file_name)):
-		show_success_message("%s already downloaded!" % file_name)
-		download_overlay.hide()
-		return
 	is_downloading = true
 	set_progress_label("Downloading %s" % file_name)
 	download_target = file_name
@@ -200,6 +205,12 @@ func download_asset(url: String, file_name: String) -> void:
 	if err != OK:
 		show_error_message(str("Failed to make request for asset: ", err))
 		return
+
+func _has_bad_phrase(file_name: String) -> bool:
+	for i in DISALLOWED_PHRASES:
+		if file_name.to_lower().contains(i):
+			return true
+	return false
 
 func _on_http_downloader_request_completed(_result, response_code, _headers, _body):
 	is_downloading = false
