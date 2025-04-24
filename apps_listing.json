@@ -1,11 +1,12 @@
 [
 	{
 		"title": "App Downloader",
-		"image_url": "https://i.postimg.cc/8CY4ZtFk/screenshot.png",
+		"image_url": "https://i.postimg.cc/J07FZ5P5/app-downloader-splash.png",
 		"description": "A muOS application for downloading apps directly from their GitHub releases.",
 		"repo": "andersmmg/app_downloader",
 		"gallery": [
-			"https://i.postimg.cc/NMr4SmT6/screenshot2.png"
+			"https://i.postimg.cc/vTLb9X7Q/screenshot.png",
+			"https://i.postimg.cc/ncpHZbZM/screenshot2.png"
 		]
 	},
 	{
