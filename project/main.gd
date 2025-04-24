@@ -79,19 +79,11 @@ func _process(delta) -> void:
 			get_tree().quit()
 		if Input.is_action_just_pressed("ui_select"):
 			if selected_app:
-				_store_last_selected()
 				info_panel.open()
 
 func _panel_closed() -> void:
 	if last_selected_app:
 		last_selected_app.grab_focus()
-
-func _store_last_selected():
-	last_selected_app = null
-	for i in apps_list.get_children():
-		if i.has_focus():
-			last_selected_app = i
-			return
 
 func _download_pressed() -> void:
 	check_latest_release(selected_app.repo)
@@ -139,6 +131,7 @@ func _show_data(data: Array[AppItemData]) -> void:
 		apps_list.add_child(new_item)
 		new_item.focus_entered.connect(func():
 			_show_details(i)
+			last_selected_app = new_item
 			)
 	loading_overlay.hide()
 	_focus_first()
@@ -146,15 +139,14 @@ func _show_data(data: Array[AppItemData]) -> void:
 func _show_details(app_item: AppItemData):
 	no_image_label.hide()
 	selected_app = app_item
-	app_image.texture_url = app_item.image_url
 	app_desc.text = app_item.description
 	app_title.text = app_item.title
 
 func _image_load_failed() -> void:
-	no_image_label.show()
+	app_image.hide()
 
 func _image_load_success(_image: Texture, _from_cache: bool) -> void:
-	no_image_label.hide()
+	app_image.show()
 
 func _focus_first() -> void:
 	for i in apps_list.get_children():
