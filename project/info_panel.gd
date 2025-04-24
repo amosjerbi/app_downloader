@@ -16,6 +16,7 @@ const ANIM_DURATION: float = 0.3
 @onready var gallery_prompt: Control = %GalleryPrompt
 @onready var gallery_page: Container = %GalleryPage
 @onready var app_image: TextureRectUrl = %AppImage
+@onready var no_image_label = %NoImageLabel
 
 var _current_gallery: Array[String]
 var _current_slide: int = 0:
@@ -64,6 +65,7 @@ func _update_gallery():
 func open() -> void:
 	if _is_open:
 		return
+	no_image_label.hide()
 	_current_slide = 0
 	_current_gallery = main.selected_app.gallery.duplicate()
 	_current_gallery.push_front(main.selected_app.image_url)

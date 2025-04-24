@@ -54,6 +54,7 @@ func _ready() -> void:
 	download_overlay.hide()
 	http_downloader.request_completed.connect(_on_http_downloader_request_completed)
 	app_image.load_failed.connect(_image_load_failed)
+	app_image.load_success.connect(_image_load_success)
 	info_panel.download_pressed.connect(_download_pressed)
 	info_panel.closed.connect(_panel_closed)
 	_get_store()
@@ -151,6 +152,9 @@ func _show_details(app_item: AppItemData):
 
 func _image_load_failed() -> void:
 	no_image_label.show()
+
+func _image_load_success(_image: Texture, _from_cache: bool) -> void:
+	no_image_label.hide()
 
 func _focus_first() -> void:
 	for i in apps_list.get_children():
