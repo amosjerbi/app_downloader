@@ -1,9 +1,12 @@
 [
 	{
 		"title": "App Downloader",
-		"image_url": "https://cdn.jsdelivr.net/gh/andersmmg/app_downloader/project/splash.png",
+		"image_url": "https://i.postimg.cc/8CY4ZtFk/screenshot.png",
 		"description": "A muOS application for downloading apps directly from their GitHub releases.",
-		"repo": "andersmmg/app_downloader"
+		"repo": "andersmmg/app_downloader",
+		"gallery": [
+			"https://i.postimg.cc/NMr4SmT6/screenshot2.png"
+		]
 	},
 	{
 		"title": "Aesthetic",
