@@ -1,3 +1,4 @@
+class_name Main
 extends CanvasLayer
 
 const APP_ITEM = preload("res://app_item.tscn")
@@ -22,7 +23,7 @@ var DOWNLOAD_LOCATION: String
 @onready var quit_prompt: Container = %QuitPrompt
 @onready var offline_icon: TextureRect = %OfflineIcon
 @onready var no_image_label = %NoImageLabel
-@onready var info_panel = $InfoPanel
+@onready var info_panel: InfoPanel = $InfoPanel
 @onready var loading_icon = %LoadingIcon
 
 var apps: Array[AppItemData]

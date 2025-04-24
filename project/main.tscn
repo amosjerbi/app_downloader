@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c432fo8bftnlq"]
+[gd_scene load_steps=35 format=3 uid="uid://c432fo8bftnlq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Script" path="res://classes/texture_rect_url.gd" id="2_moj0t"]
@@ -11,7 +11,10 @@
 [ext_resource type="LabelSettings" uid="uid://bdjknu0k1ajnt" path="res://prompt_label.tres" id="8_rlany"]
 [ext_resource type="Script" path="res://info_panel.gd" id="8_sibfm"]
 [ext_resource type="Texture2D" uid="uid://cqsqsfrot8ne" path="res://icons/download.svg" id="10_dxkg6"]
+[ext_resource type="Texture2D" uid="uid://c77sgb1v6k6bm" path="res://icons/loader.svg" id="10_j5w7c"]
+[ext_resource type="Texture2D" uid="uid://do0e8uno3q3iv" path="res://icons/dot.svg" id="10_uiywb"]
 [ext_resource type="Texture2D" uid="uid://fts56fgeau0y" path="res://icons/ellipsis.svg" id="12_4xnu5"]
+[ext_resource type="Texture2D" uid="uid://dfoigwsiovlrb" path="res://icons/dpad_horizontal.svg" id="12_xhpnv"]
 
 [sub_resource type="Theme" id="Theme_1csnl"]
 default_font_size = 19
@@ -162,6 +165,7 @@ vertical_alignment = 2
 
 [node name="SuccessLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_5646g")
@@ -294,8 +298,7 @@ text = "Scroll"
 
 [node name="HTTPDownloader" type="HTTPRequest" parent="."]
 
-[node name="InfoPanel" type="Control" parent="."]
-visible = false
+[node name="InfoPanel" type="Control" parent="." node_paths=PackedStringArray("main")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -304,6 +307,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_vx38o")
 script = ExtResource("8_sibfm")
+main = NodePath("..")
 
 [node name="ColorRect" type="ColorRect" parent="InfoPanel"]
 unique_name_in_owner = true
@@ -357,6 +361,7 @@ layout_mode = 2
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("2_moj0t")
+loading_texture = ExtResource("10_j5w7c")
 
 [node name="NoImageLabel" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/AppImage"]
 unique_name_in_owner = true
@@ -375,6 +380,25 @@ grow_vertical = 2
 text = "No image."
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GalleryPage" type="HBoxContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GalleryPage"]
+layout_mode = 2
+texture = ExtResource("10_uiywb")
+
+[node name="TextureRect2" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GalleryPage"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 2
+texture = ExtResource("10_uiywb")
+
+[node name="TextureRect3" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/GalleryPage"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 2
+texture = ExtResource("10_uiywb")
 
 [node name="AppTitle" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -423,6 +447,25 @@ vertical_alignment = 2
 [node name="Control" type="Control" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="GalleryPrompt" type="HBoxContainer" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/GalleryPrompt"]
+layout_mode = 2
+texture = ExtResource("12_xhpnv")
+expand_mode = 2
+
+[node name="Label4" type="Label" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer/GalleryPrompt"]
+layout_mode = 2
+text = "Gallery"
+label_settings = ExtResource("8_rlany")
+vertical_alignment = 2
+
+[node name="Control3" type="Control" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextureRect2" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/PanelContainer/HBoxContainer"]
@@ -453,6 +496,7 @@ text = "Scroll"
 
 [node name="DownloadOverlay" type="PanelContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0

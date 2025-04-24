@@ -5,6 +5,7 @@ var title: String
 var image_url: String
 var description: String
 var repo: String
+var gallery: Array[String]
 
 static func create(data: Dictionary) -> AppItemData:
 	var new_data = AppItemData.new()
@@ -16,5 +17,9 @@ static func create(data: Dictionary) -> AppItemData:
 		new_data.description = data['description']
 	if data.has('repo'):
 		new_data.repo = data['repo']
+	if data.has('gallery'):
+		for i in data['gallery']:
+			if i is String:
+				new_data.gallery.append(i)
 	
 	return new_data
