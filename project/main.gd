@@ -47,6 +47,7 @@ func _ready() -> void:
 	success_label.hide()
 	no_image_label.hide()
 	DirAccess.make_dir_absolute(DOWNLOAD_LOCATION)
+	progress_bar.value = 0
 	loading_overlay.show()
 	download_overlay.hide()
 	http_downloader.request_completed.connect(_on_http_downloader_request_completed)
@@ -63,17 +64,17 @@ func _process(delta) -> void:
 		success_label.hide()
 	
 	if loading_overlay.visible:
-		if Input.is_action_just_pressed("back"):
+		if Input.is_action_just_pressed("ui_cancel"):
 			get_tree().quit()
 	elif download_overlay.visible:
 		_update_download_progress()
 	elif info_panel.is_open():
-		if Input.is_action_just_pressed("back"):
+		if Input.is_action_just_pressed("ui_cancel"):
 			info_panel.close()
 	else:
-		if Input.is_action_just_pressed("back"):
+		if Input.is_action_just_pressed("ui_cancel"):
 			get_tree().quit()
-		if Input.is_action_just_pressed("select"):
+		if Input.is_action_just_pressed("ui_select"):
 			if selected_app:
 				_store_last_selected()
 				info_panel.open()

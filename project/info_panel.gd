@@ -18,6 +18,7 @@ func _ready() -> void:
 	if not _is_open:
 		overlay.position.x = panel_container.get_rect().size.x
 	show()
+	download_button.pressed.connect(func(): download_pressed.emit())
 
 func _process(delta):
 	color_rect.modulate = lerp(color_rect.modulate, Color.WHITE if _is_open else Color.TRANSPARENT, delta * 7.0)

@@ -1,8 +1,8 @@
 back = \"
 select = \"
 start = \"
-b = b
-a = enter
+b = esc
+a = space
 x = \"
 y = \"
 l1 = \"
