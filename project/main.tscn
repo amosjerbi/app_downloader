@@ -361,6 +361,7 @@ theme_override_constants/margin_right = 70
 
 [node name="AppImage" type="TextureRect" parent="InfoPanel/Overlay/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 expand_mode = 5
 stretch_mode = 5

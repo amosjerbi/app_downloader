@@ -126,7 +126,7 @@ func _on_request_completed(result, response_code, _headers, body):
 		var _texture: ImageTexture = ImageTexture.create_from_image(image)
 		overlay_texture.hide()
 		if !Engine.is_editor_hint():
-			load_success.emit(image, false)
+			load_success.emit(_texture, false)
 		
 		if store_cache:
 			match file_ext:
