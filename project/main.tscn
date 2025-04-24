@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://c432fo8bftnlq"]
+[gd_scene load_steps=36 format=3 uid="uid://c432fo8bftnlq"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cu2k1gncbjpws" path="res://icons/appdownloader_small.svg" id="2_6djw0"]
 [ext_resource type="Script" path="res://classes/texture_rect_url.gd" id="2_moj0t"]
 [ext_resource type="PackedScene" uid="uid://bj88ejvy2jlin" path="res://app_item.tscn" id="2_wdgc4"]
 [ext_resource type="Texture2D" uid="uid://2ey53ww266rr" path="res://icons/a_button.svg" id="3_8hryx"]
@@ -147,6 +148,18 @@ layout_mode = 2
 [node name="StatusBar" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_6djw0")
+expand_mode = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/StatusBar"]
 layout_mode = 2
@@ -299,6 +312,7 @@ text = "Scroll"
 [node name="HTTPDownloader" type="HTTPRequest" parent="."]
 
 [node name="InfoPanel" type="Control" parent="." node_paths=PackedStringArray("main")]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
