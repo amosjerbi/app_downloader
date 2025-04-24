@@ -45,14 +45,19 @@ The app listing is fetched from the following structure:
 
 ```json
 [
-    {
-        "title": "App Downloader",
-        "image_url": "https://cdn.jsdelivr.net/gh/andersmmg/app_downloader/project/splash.png",
-        "description": "A muOS application for downloading apps directly from their GitHub releases.",
-        "repo": "andersmmg/app_downloader"
-    }
+  {
+    "title": "App Downloader",
+    "image_url": "https://i.postimg.cc/8CY4ZtFk/screenshot.png",
+    "description": "A muOS application for downloading apps directly from their GitHub releases.",
+    "repo": "andersmmg/app_downloader",
+    "gallery": [
+      "https://i.postimg.cc/NMr4SmT6/screenshot2.png"
+    ]
+  }
 ]
 ```
+
+Any additional images can be added to the `gallery` list which will be viewable after the main image in the app panel.
 
 ## Adding New Apps
 
