@@ -4,6 +4,7 @@ extends TextureRect
 
 var http_request := HTTPRequest.new()
 var overlay_texture := TextureRect.new()
+var overlay_margin := MarginContainer.new()
 var file_name := ""
 var file_ext := ""
 
@@ -47,20 +48,19 @@ func _ready():
 		http_request.request_completed.connect(_on_request_completed)
 		add_child(http_request, false, Node.INTERNAL_MODE_FRONT)
 	
-	resized.connect(func(): overlay_texture.custom_minimum_size = size)
+	resized.connect(_update_overlay)
+	if !overlay_margin.is_inside_tree():
+		overlay_margin.add_theme_constant_override("margin_left", overlay_margins)
+		overlay_margin.add_theme_constant_override("margin_right", overlay_margins)
+		overlay_margin.add_theme_constant_override("margin_up", overlay_margins)
+		overlay_margin.add_theme_constant_override("margin_down", overlay_margins)
+		overlay_margin.custom_minimum_size = size
+		add_child(overlay_margin, false, Node.INTERNAL_MODE_FRONT)
 	if !overlay_texture.is_inside_tree():
-		var margin = MarginContainer.new()
-		margin.add_theme_constant_override("margin_left", overlay_margins)
-		margin.add_theme_constant_override("margin_right", overlay_margins)
-		margin.add_theme_constant_override("margin_up", overlay_margins)
-		margin.add_theme_constant_override("margin_down", overlay_margins)
-		margin.custom_minimum_size = size
 		overlay_texture.texture = loading_texture
-		overlay_texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-		overlay_texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		overlay_texture.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
 		overlay_texture.hide()
-		add_child(margin, false, Node.INTERNAL_MODE_FRONT)
-		margin.add_child(overlay_texture, false, Node.INTERNAL_MODE_FRONT)
+		overlay_margin.add_child(overlay_texture, false, Node.INTERNAL_MODE_FRONT)
 	
 	load_image()
 
@@ -95,6 +95,9 @@ func load_image():
 	if file_ext != "":
 		_download_image()
 
+func _update_overlay() -> void:
+	overlay_margin.custom_minimum_size = size
+
 func _download_image():
 	texture = null
 	http_request.cancel_request()
@@ -105,7 +108,6 @@ func _download_image():
 
 func _on_request_completed(result, response_code, _headers, body):
 	if response_code == 200 and result == HTTPRequest.RESULT_SUCCESS:
-		print("image downloaded")
 		var image = Image.new()
 		var image_error = null
 		
