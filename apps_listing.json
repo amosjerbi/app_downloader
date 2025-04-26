@@ -43,5 +43,10 @@
 		"image_url": "https://i.postimg.cc/zB2qF1CH/7cffeb5a7182a1f4d4a759fc65a13a80ccd74a9e.png",
 		"description": "Audio player for MUOS on Love2D",
 		"repo": "vasinsky/Aplayer"
+	},
+	{
+		"title": "Rethemer",
+		"description": "A recoloring tool for alternate themes",
+		"repo": "Photonic2790/Rethemer"
 	}
 ]
