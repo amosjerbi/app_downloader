@@ -1,132 +1,70 @@
 [
-        {
-                "title": "App Downloader",
-                "image_url": "https://i.postimg.cc/J07FZ5P5/app-downloader-splash.png",
-                "description": "A muOS application for downloading apps directly from their GitHub releases.",
-                "repo": "andersmmg/app_downloader",
-                "gallery": [
-                        "https://i.postimg.cc/vTLb9X7Q/screenshot.png",
-                        "https://i.postimg.cc/ncpHZbZM/screenshot2.png"
-                ]
-        },
-        {
-                "title": "Aesthetic",
-                "image_url": "https://cdn.jsdelivr.net/gh/joneavila/aesthetic/.github/screenshot_menu_main.png",
-                "description": "A muOS application for creating minimalistic themes directly on your handheld.",
-                "repo": "joneavila/aesthetic"
-        },
-        {
-                "title": "Scrappy",
-                "image_url": "https://i.postimg.cc/1tcxQkS2/425036773-3f22110f-9df0-4ee6-80f5-e83f42dd1052.png",
-                "description": "An artwork scraper featuring a Skyscraper backend. Built with LOVE2D for muOS.",
-                "repo": "gabrielfvale/scrappy"
-        },
-        {
-                "title": "RomM",
-                "image_url": "https://cdn.jsdelivr.net/gh/rommapp/muos-app/.github/resources/gamelist.png",
-                "description": "Browse your game catalog, download titles, and sync your saves seamlessly",
-                "repo": "rommapp/muos-app"
-        },
-        {
-                "title": "Bluetooth",
-                "image_url": "https://i.postimg.cc/HWQqXjSQ/400180749-e9cf6c27-c8b1-4747-8ec9-61bd60b08587.png",
-                "description": "A simple tool to manage Bluetooth connections on gaming devices running muOS, allowing you to easily connect and control Bluetooth devices.",
-                "repo": "nvcuong1312/bltMuos"
-        },
-        {
-                "title": "Wifi Hotspot",
-                "description": "A simple tool to create a WiFi hotspot on gaming devices running muOS, providing a fast and stable network connection for other devices.",
-                "repo": "nvcuong1312/hotspotmuos"
-        },
-        {
-                "title": "APlayer",
-                "image_url": "https://i.postimg.cc/zB2qF1CH/7cffeb5a7182a1f4d4a759fc65a13a80ccd74a9e.png",
-                "description": "Audio player for MUOS on Love2D",
-                "repo": "vasinsky/Aplayer"
-        },
-        {
-                "title": "Rethemer",
-                "description": "A recoloring tool for alternate themes",
-                "repo": "Photonic2790/Rethemer"
-        },
-        {
-                "title": "App Downloader",
-                "image_url": "https://i.postimg.cc/J07FZ5P5/app-downloader-splash.png",
-                "description": "A muOS application for downloading apps directly from their GitHub releases.",
-                "repo": "andersmmg/app_downloader",
-                "gallery": [
-                        "https://i.postimg.cc/vTLb9X7Q/screenshot.png",
-                        "https://i.postimg.cc/ncpHZbZM/screenshot2.png"
-                ]
-        },
-        {
-                "title": "Aesthetic",
-                "image_url": "https://cdn.jsdelivr.net/gh/joneavila/aesthetic/.github/screenshot_menu_main.png",
-                "description": "A muOS application for creating minimalistic themes directly on your handheld.",
-                "repo": "joneavila/aesthetic"
-        },
-        {
-                "title": "Scrappy",
-                "image_url": "https://i.postimg.cc/1tcxQkS2/425036773-3f22110f-9df0-4ee6-80f5-e83f42dd1052.png",
-                "description": "An artwork scraper featuring a Skyscraper backend. Built with LOVE2D for muOS.",
-                "repo": "gabrielfvale/scrappy"
-        },
-        {
-                "title": "RomM",
-                "image_url": "https://cdn.jsdelivr.net/gh/rommapp/muos-app/.github/resources/gamelist.png",
-                "description": "Browse your game catalog, download titles, and sync your saves seamlessly",
-                "repo": "rommapp/muos-app"
-        },
-        {
-                "title": "Bluetooth",
-                "image_url": "https://i.postimg.cc/HWQqXjSQ/400180749-e9cf6c27-c8b1-4747-8ec9-61bd60b08587.png",
-                "description": "A simple tool to manage Bluetooth connections on gaming devices running muOS, allowing you to easily connect and control Bluetooth devices.",
-                "repo": "nvcuong1312/bltMuos"
-        },
-        {
-                "title": "Wifi Hotspot",
-                "description": "A simple tool to create a WiFi hotspot on gaming devices running muOS, providing a fast and stable network connection for other devices.",
-                "repo": "nvcuong1312/hotspotmuos"
-        },
-        {
-                "title": "APlayer",
-                "image_url": "https://i.postimg.cc/zB2qF1CH/7cffeb5a7182a1f4d4a759fc65a13a80ccd74a9e.png",
-                "description": "Audio player for MUOS on Love2D",
-                "repo": "vasinsky/Aplayer"
-        },
-        {
-                "title": "Rethemer",
-                "description": "A recoloring tool for alternate themes",
-                "repo": "Photonic2790/Rethemer"
-        },
-        {
-                "title": "HowLongToBeat",
-                "image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/howlongtobeat.png",
-                "description": "A muOS application that allows you to check game completion times from HowLongToBeat.com directly on your handheld device. Search for games, view completion times, and get detailed information about your favorite games.",
-                "repo": "amosjerbi/muOS_Apps",
-                "gallery": [
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/howlongtobeat_screenshot1.png",
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/howlongtobeat_screenshot2.png"
-                ]
-        },
-        {
-                "title": "WiFi Manager",
-                "image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/wifi_manager.png",
-                "description": "A muOS application for managing WiFi connections on your handheld device. Easily connect to WiFi networks, view saved networks, and manage your wireless connections.",
-                "repo": "amosjerbi/muOS_Apps",
-                "gallery": [
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/wifi_manager_screenshot1.png",
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/wifi_manager_screenshot2.png"
-                ]
-        },
-        {
-                "title": "Migration Tool",
-                "image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/migration_tool.png",
-                "description": "A utility tool for muOS that helps with data migration and system management. Transfer data between devices and manage system settings efficiently.",
-                "repo": "amosjerbi/muOS_Apps",
-                "gallery": [
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/migration_tool_screenshot1.png",
-                        "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/migration_tool_screenshot2.png"
-                ]
-        }
+	{
+		"title": "App Downloader",
+		"image_url": "https://i.postimg.cc/J07FZ5P5/app-downloader-splash.png",
+		"description": "A muOS application for downloading apps directly from their GitHub releases.",
+		"repo": "andersmmg/app_downloader",
+		"gallery": [
+			"https://i.postimg.cc/vTLb9X7Q/screenshot.png",
+			"https://i.postimg.cc/ncpHZbZM/screenshot2.png"
+		]
+	},
+	{
+		"title": "Aesthetic",
+		"image_url": "https://cdn.jsdelivr.net/gh/joneavila/aesthetic/.github/screenshot_menu_main.png",
+		"description": "A muOS application for creating minimalistic themes directly on your handheld.",
+		"repo": "joneavila/aesthetic"
+	},
+	{
+		"title": "Scrappy",
+		"image_url": "https://i.postimg.cc/1tcxQkS2/425036773-3f22110f-9df0-4ee6-80f5-e83f42dd1052.png",
+		"description": "An artwork scraper featuring a Skyscraper backend. Built with LOVE2D for muOS.",
+		"repo": "gabrielfvale/scrappy"
+	},
+	{
+		"title": "RomM",
+		"image_url": "https://cdn.jsdelivr.net/gh/rommapp/muos-app/.github/resources/gamelist.png",
+		"description": "Browse your game catalog, download titles, and sync your saves seamlessly",
+		"repo": "rommapp/muos-app"
+	},
+	{
+		"title": "Bluetooth",
+		"image_url": "https://i.postimg.cc/HWQqXjSQ/400180749-e9cf6c27-c8b1-4747-8ec9-61bd60b08587.png",
+		"description": "A simple tool to manage Bluetooth connections on gaming devices running muOS, allowing you to easily connect and control Bluetooth devices.",
+		"repo": "nvcuong1312/bltMuos"
+	},
+	{
+		"title": "Wifi Hotspot",
+		"description": "A simple tool to create a WiFi hotspot on gaming devices running muOS, providing a fast and stable network connection for other devices.",
+		"repo": "nvcuong1312/hotspotmuos"
+	},
+	{
+		"title": "APlayer",
+		"image_url": "https://i.postimg.cc/zB2qF1CH/7cffeb5a7182a1f4d4a759fc65a13a80ccd74a9e.png",
+		"description": "Audio player for MUOS on Love2D",
+		"repo": "vasinsky/Aplayer"
+	},
+	{
+		"title": "Rethemer",
+		"description": "A recoloring tool for alternate themes",
+		"repo": "Photonic2790/Rethemer"
+	},
+	{
+		"title": "Playtime Remaining",
+		"image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/playtime_remaining.png",
+		"description": "A muOS application that allows you to check game completion times from HowLongToBeat.com directly on your handheld device. Search for games, view completion times, and get detailed information about your favorite games.",
+		"repo": "amosjerbi/muOS_Apps"
+	},
+	{
+		"title": "WiFi Manager",
+		"image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/wifi_manager.png",
+		"description": "A muOS application for managing WiFi connections on your handheld device. Easily connect to WiFi networks, view saved networks, and manage your wireless connections.",
+		"repo": "amosjerbi/muOS_Apps"
+	},
+	{
+		"title": "SD Card Transfer",
+		"image_url": "https://raw.githubusercontent.com/amosjerbi/muOS_Apps/main/ARCHIVE/sdcard_transfer.png",
+		"description": "A utility tool for muOS that helps with data migration and system management. Transfer data between devices and manage system settings efficiently.",
+		"repo": "amosjerbi/muOS_Apps"
+	}
 ]
